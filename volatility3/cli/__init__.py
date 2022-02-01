@@ -161,12 +161,12 @@ class CommandLine:
                             default = False,
                             action = 'store_true')
         parser.add_argument("--list",
-                            metavar = 'LISTING',
+                            metavar = 'windows/linux/mac/all',
                             default = None,
                             type = str,
                             help = "List plugins")
         parser.add_argument("--platform",
-                            metavar = 'PLATFORM',
+                            metavar = 'windows/linux/mac',
                             default = None,
                             type = str,
                             help = "Select PLATFORM")
@@ -256,17 +256,14 @@ class CommandLine:
 
 
         args = parser.parse_args()
-        
 
 
-        
-        
+
         if args.list is not None:
             if args.list == 'w' or args.list == 'windows':
                 print('\n')
                 print("----------Windows Plugins-----------\n")
                 for pl in plugin_list.keys():
-                    
                     if 'windows' in pl:
                         print(str(pl))
                 print("\n------------------------------------\nOther arguments ignored.")
@@ -287,9 +284,15 @@ class CommandLine:
                         print(str(pl))
                 print("\n------------------------------------\nOther arguments ignored.")
                 sys.exit(1)
+            elif args.list == 'all':
+                print('\n')
+                print("--------------All Plugins-----------\n")
+                for pl in plugin_list.keys():
+                    print(str(pl))
+                print("\n------------------------------------\nOther arguments ignored.")
             else:
-                print("Argument Of List Not recognized !")
-        
+                    print("Argument Of List Not recognized !")
+
         if args.plugin is None:
             parser.error("Please select a plugin to run")
 
