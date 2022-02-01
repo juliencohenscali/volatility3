@@ -169,7 +169,7 @@ class CommandLine:
                             metavar = 'windows/linux/mac',
                             default = None,
                             type = str,
-                            help = "Select PLATFORM")
+                            help = "Select PLATFORM for module")
 
         # We have to filter out help, otherwise parse_known_args will trigger the help message before having
         # processed the plugin choice or had the plugin subparser added.
